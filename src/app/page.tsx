@@ -132,14 +132,15 @@ const Hero = () => {
       {/* New Arrival Section */}
       <div className="flex flex-col md:flex-row items-center justify-between p-4 bg-primary">
         {/* Left Side - Image */}
-        <div className="w-full md:w-1/2 flex justify-center">
-          <img
-            src="/images/Asgaard sofa 1.png"
-            alt="Asgaard Sofa"
-            className="w-full max-w-md object-cover rounded-lg"
-          />
-        </div>
+        <Image
+  src="/images/Asgaard sofa 1.png"
+  alt="Asgaard Sofa"
+  width={600} // Adjust width as needed
+  height={400} // Adjust height as needed
+  className="w-full max-w-md object-cover rounded-lg"
+/>
 
+         
         {/* Right Side - Text */}
         <div className="w-full md:w-1/2 mt-6 md:mt-0 md:pl-8 text-center md:text-left">
           <p className="text-sm text-gray-800 uppercase tracking-wide">New Arrivals</p>
