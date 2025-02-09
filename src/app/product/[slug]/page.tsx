@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { addToCart } from '@/app/actions/addToCart';
-import { createClient } from '@sanity/client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import FreeDeliveryGrid from '@/components/freeinfo';
-import { useUser, SignInButton } from '@clerk/nextjs';
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { useState, useEffect } from "react";
+import { addToCart } from "@/app/actions/addToCart";
+import { createClient } from "@sanity/client";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import FreeDeliveryGrid from "@/components/freeinfo";
+import { useUser, SignInButton } from "@clerk/nextjs";
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
 // Sanity client setup
 const client = createClient({
-  projectId: 'n3fr1x5a',
-  dataset: 'production',
-  apiVersion: '2025-01-13',
+  projectId: "n3fr1x5a",
+  dataset: "production",
+  apiVersion: "2025-01-13",
   useCdn: true,
 });
 
@@ -42,7 +42,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false); // Modal state
-  const { isSignedIn } = useUser(); // Clerk will check the user's authentication
+  const { isSignedIn } = useUser(); // Clerk se user ki authentication check karega
 
   useEffect(() => {
     const getProduct = async () => {
@@ -56,7 +56,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
     return (
       <div className="text-center p-8">
         <h2 className="text-xl">Product not found...</h2>
-        <p className="mt-4">It seems the product doesn't exist or the URL is incorrect.</p>
+        <p className="mt-4">It seems the product doesnot exist or the URL is incorrect.</p>
         <Link href="/product" className="text-blue-500 mt-4 inline-block">
           Back to Products
         </Link>
@@ -67,7 +67,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
   // ✅ Add to Cart & Redirect to Cart Page
   const handleAddToCart = async () => {
     if (!isSignedIn) {
-      setIsOpen(true); // Modal will open if the user is not signed in
+      setIsOpen(true); //  User agar sign in na ho toh modal open hoga
       return;
     }
 
@@ -77,10 +77,10 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       name: product.name,
       slug: product.slug,
       price: product.price,
-      imageUrl: product.imageUrl || '/default-image.jpg',
+      imageUrl: product.imageUrl || "/default-image.jpg",
     });
     setLoading(false);
-    router.push('/cart');
+    router.push("/cart");
   };
 
   return (
@@ -88,7 +88,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
         <div className="w-full lg:w-1/2">
           <Image
-            src={product.imageUrl || '/default-image.jpg'}
+            src={product.imageUrl || "/default-image.jpg"}
             alt={product.name}
             width={600}
             height={600}
@@ -105,7 +105,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
             </p>
           )}
           <p className="text-sm md:text-base text-gray-600 mt-2 md:mt-4">
-            {product.stockLevel > 0 ? `${product.stockLevel} in stock` : 'Out of stock'}
+            {product.stockLevel > 0 ? `${product.stockLevel} in stock` : "Out of stock"}
           </p>
 
           <div className="mt-4 md:mt-6">
@@ -114,7 +114,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
               disabled={product.stockLevel <= 0 || loading}
               onClick={handleAddToCart}
             >
-              {loading ? 'Adding...' : product.stockLevel > 0 ? 'Add to Cart' : 'Out of Stock'}
+              {loading ? "Adding..." : product.stockLevel > 0 ? "Add to Cart" : "Out of Stock"}
             </button>
           </div>
         </div>

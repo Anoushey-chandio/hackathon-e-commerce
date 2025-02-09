@@ -1,3 +1,5 @@
+// components/Hero.tsx
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -70,10 +72,8 @@ const Hero = () => {
           <h1 className="text-4xl lg:text-6xl font-extrabold text-gray-800">
             Rocket single seater
           </h1>
-          {/* Link to Product List */}
-          <Link href="/productList">
-            <Button label="Shop Now" underline={true} />
-          </Link>
+          {/* Button */}
+          <Button label="Shop Now" underline={true} />
         </div>
 
         {/* Right side - Image */}
@@ -86,6 +86,8 @@ const Hero = () => {
             className="w-full h-auto object-contain"
           />
         </div>
+
+       
       </section>
 
       {/* Use the TwoPics component */}
@@ -114,33 +116,34 @@ const Hero = () => {
                 discountPercentage={product.discountPercentage}
                 isFeaturedProduct={product.isFeaturedProduct}
                 stockLevel={product.stockLevel}
-                category={product.category}
-                slug={''} // You can add a dynamic slug if needed
-              />
+                category={product.category} slug={''}              />
             ))}
           </div>
         )}
-        <div className="flex justify-center mt-6">
-          <Link href="/productList">
-            <button className="px-6 py-3 bg-primary text-gray-950 font-semibold rounded-lg shadow-md hover:bg-gray-700 hover:text-white transition duration-300">
-              View All Products
-            </button>
-          </Link>
-        </div>
+      <div className="flex justify-center mt-6">
+  <Link href="/productList">
+    <button className="px-6 py-3 bg-primary text-gray-950 font-semibold rounded-lg shadow-md hover:bg-gray-700 hover:text-white transition duration-300">
+      View All Products
+    </button>
+  </Link>
+</div>
+
       </div>
 
       {/* New Arrival Section */}
       <div className="flex flex-col md:flex-row items-center justify-between p-4 bg-primary">
         {/* Left Side - Image */}
-        <Image
-  src="/images/Asgaard sofa 1.png"
-  alt="Asgaard Sofa"
-  width={600} // Adjust width as needed
-  height={400} // Adjust height as needed
-  className="w-full max-w-md object-cover rounded-lg"
-/>
+        <div className="w-full md:w-1/2 flex justify-center">
+  <Image
+    src="/images/Asgaard sofa 1.png"
+    alt="Asgaard Sofa"
+    width={400} // Adjust width as needed
+    height={300} // Adjust height as needed
+    className="w-full max-w-md object-cover rounded-lg"
+  />
+</div>
 
-         
+
         {/* Right Side - Text */}
         <div className="w-full md:w-1/2 mt-6 md:mt-0 md:pl-8 text-center md:text-left">
           <p className="text-sm text-gray-800 uppercase tracking-wide">New Arrivals</p>
@@ -153,19 +156,9 @@ const Hero = () => {
       {/* Blogs Grid */}
       <ImageGrid />
 
-      {/* Instagram Section */}
-      <div className="relative w-full h-[430px]">
-        <Image
-          src="/images/Group 47.png"
-          alt="Image 2"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
+     
     </>
   );
 };
 
 export default Hero;
-
