@@ -73,7 +73,13 @@ const Hero = () => {
             Rocket single seater
           </h1>
           {/* Button */}
-          <Button label="Shop Now" underline={true} />
+          <div className="flex justify-center mt-6">
+  <Link href="/productList">
+    <button className="px-6 py-3 bg-gray-700 text-white font-semibold rounded-lg shadow-md hover:bg-primary hover:text-gray-950 transition duration-300">
+     Shop Now
+    </button>
+  </Link>
+</div>
         </div>
 
         {/* Right side - Image */}
