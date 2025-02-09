@@ -30,7 +30,7 @@ const Header = () => {
           {isMenuOpen ? <FaTimes className="w-6 h-6 text-black" /> : <FaBars className="w-6 h-6 text-black" />}
         </div>
 
-        {/* Icons Section */}
+        {/* Icons Section (Desktop) */}
         <div className="hidden sm:flex items-center space-x-6 text-black">
           <SignedOut>
             <SignInButton mode="redirect">
@@ -40,39 +40,54 @@ const Header = () => {
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
           </SignedIn>
-          <div className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer">
-            <FaHeart />
-          </div>
-          <div className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer">
-            <FaSearch />
-          </div>
-          <Link href="/cart" passHref>
-            <div className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer">
-              <FaShoppingCart />
-            </div>
+          <FaHeart className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer" />
+          <FaSearch className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer" />
+          <Link href="/cart">
+            <FaShoppingCart className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer" />
           </Link>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu with Icons */}
       <div
         className={`sm:hidden fixed top-0 left-0 w-full h-full bg-white z-50 transform ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-all duration-300 ease-in-out`}
       >
-        <div className="flex justify-end p-4">
+        <div className="flex justify-between p-4">
+          <div className="text-2xl font-bold text-black">FurniGo!</div>
           <FaTimes onClick={toggleMenu} className="w-6 h-6 text-black cursor-pointer" />
         </div>
+
+        {/* Mobile Menu Links */}
         <nav className="flex flex-col items-center space-y-6 mt-8">
-          <Link href="/" className="text-black text-xl hover:text-gray-600">Home</Link>
-          <Link href="/productList" className="text-black text-xl hover:text-gray-600">Shop</Link>
-          <Link href="/about" className="text-black text-xl hover:text-gray-600">About</Link>
-          <Link href="/contact" className="text-black text-xl hover:text-gray-600">Contact</Link>
+          <Link href="/" className="text-black text-xl hover:text-gray-600" onClick={toggleMenu}>Home</Link>
+          <Link href="/productList" className="text-black text-xl hover:text-gray-600" onClick={toggleMenu}>Shop</Link>
+          <Link href="/about" className="text-black text-xl hover:text-gray-600" onClick={toggleMenu}>About</Link>
+          <Link href="/contact" className="text-black text-xl hover:text-gray-600" onClick={toggleMenu}>Contact</Link>
         </nav>
+
+        {/* Mobile Menu Icons */}
+        <div className="flex justify-center gap-6 mt-8">
+          <SignedOut>
+            <SignInButton mode="redirect">
+              <div className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer">👤</div>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          <FaHeart className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer" />
+          <FaSearch className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer" />
+          <Link href="/cart">
+            <FaShoppingCart className="w-6 h-6 text-black hover:text-gray-600 cursor-pointer" />
+          </Link>
+        </div>
       </div>
     </header>
   );
 };
 
 export default Header;
+
 
